@@ -1,0 +1,10 @@
+[2022/06/17 12:13:34.198] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2022/06/17 12:13:34.213] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2022/06/17 12:13:34.232] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServerEx has been started!
+[2022/06/17 12:13:34.232] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2022/06/17 12:13:34.232] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....
+[2022/06/17 12:14:57.523] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2022/06/17 12:14:57.523] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2022/06/17 12:14:57.559] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServerEx has been started!
+[2022/06/17 12:14:57.559] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2022/06/17 12:14:57.559] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....
