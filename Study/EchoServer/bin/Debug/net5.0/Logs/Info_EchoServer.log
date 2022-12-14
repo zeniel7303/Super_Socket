@@ -1,0 +1,5 @@
+[2022/12/14 18:12:12.371] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2022/12/14 18:12:12.387] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2022/12/14 18:12:12.416] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServer has been started!
+[2022/12/14 18:12:12.416] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2022/12/14 18:12:12.416] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....

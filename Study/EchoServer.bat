@@ -1,0 +1,1 @@
+dotnet EchoServer\bin\Debug\net5.0\EchoServer.dll --port 12021 --maxConnectionNumber 64 --name EchoServer
