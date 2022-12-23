@@ -3,3 +3,12 @@
 [2022/12/14 18:12:12.416] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServer has been started!
 [2022/12/14 18:12:12.416] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
 [2022/12/14 18:12:12.416] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....
+[2022/12/23 15:17:58.300] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2022/12/23 15:17:58.320] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2022/12/23 15:17:58.365] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServer has been started!
+[2022/12/23 15:17:58.365] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2022/12/23 15:17:58.365] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....
+[2022/12/23 15:19:40.254] [TID:11] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 20d5be17-308c-4737-ada0-6b9c8c418079 접속
+[2022/12/23 15:19:58.620] [TID:10] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 20d5be17-308c-4737-ada0-6b9c8c418079 접속해제: SocketError
+[2022/12/23 15:20:03.465] [TID:11] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 a954caf5-a438-4962-ac83-6bb2bdd3d2a3 접속
+[2022/12/23 15:20:09.574] [TID:11] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 a954caf5-a438-4962-ac83-6bb2bdd3d2a3 접속해제: SocketError

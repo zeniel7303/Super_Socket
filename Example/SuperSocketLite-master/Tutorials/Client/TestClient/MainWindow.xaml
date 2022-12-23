@@ -26,10 +26,9 @@
         <TextBox x:Name="textBoxID" HorizontalAlignment="Left" Height="25" Margin="68,101,0,0" TextWrapping="Wrap" Text="test1" VerticalAlignment="Top" Width="87"/>
         <TextBox x:Name="textBoxPW" HorizontalAlignment="Left" Height="25" Margin="219,102,0,0" TextWrapping="Wrap" Text="32452" VerticalAlignment="Top" Width="87" Grid.ColumnSpan="2"/>
         <Button Content="접속" HorizontalAlignment="Left" Height="26" Margin="19,100,0,0" VerticalAlignment="Top" Width="37" Click="Button_Click" Grid.Column="1"/>
-        <Button Content="로그인" HorizontalAlignment="Left" Height="26" Margin="64,100,0,0" VerticalAlignment="Top" Width="38" Click="Button_Click_1" Grid.Column="1"/>
-        <Button Content="접속 끊기" HorizontalAlignment="Left" Height="26" Margin="114,100,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click_2" Grid.Column="1"/>
-        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="276" Margin="10,171,0,0" VerticalAlignment="Top" Width="484" Grid.ColumnSpan="2">           
-            
+        <Button Content="접속 끊기" HorizontalAlignment="Left" Height="26" Margin="61,100,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click_1" Grid.Column="1"/>
+        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="276" Margin="10,171,0,0" VerticalAlignment="Top" Width="484" Grid.ColumnSpan="2">
+
         </GroupBox>
         <ListBox x:Name="listBoxRoomUserList" HorizontalAlignment="Left" Height="186" Margin="21,194,0,0" VerticalAlignment="Top" Width="116"/>
         <TextBox x:Name="textBoxRoomNum" HorizontalAlignment="Left" Height="19" Margin="23,390,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="45"/>
