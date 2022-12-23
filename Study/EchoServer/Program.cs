@@ -13,7 +13,7 @@ namespace EchoServer
             var serverOption = ParseCommandLine(args);
             if (serverOption == null)
             {
-                return;
+                //return;
             }
 
             var server = new MainServer();

@@ -12,3 +12,62 @@
 [2022/12/23 15:19:58.620] [TID:10] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 20d5be17-308c-4737-ada0-6b9c8c418079 접속해제: SocketError
 [2022/12/23 15:20:03.465] [TID:11] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 a954caf5-a438-4962-ac83-6bb2bdd3d2a3 접속
 [2022/12/23 15:20:09.574] [TID:11] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 a954caf5-a438-4962-ac83-6bb2bdd3d2a3 접속해제: SocketError
+[2022/12/23 18:14:07.104] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2022/12/23 18:14:07.119] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2022/12/23 18:14:07.150] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServer has been started!
+[2022/12/23 18:14:07.150] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2022/12/23 18:14:07.150] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....
+[2022/12/23 18:17:54.842] [TID:11] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2 접속
+[2022/12/23 18:17:58.947] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:17:59.927] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:01.038] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:01.759] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:02.267] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:03.759] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.151] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.291] [TID:15] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.424] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.567] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.705] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.847] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:04.991] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:05.129] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:05.284] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:05.423] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:05.566] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:06.056] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:06.640] [TID:14] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:07.110] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:07.538] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:07.948] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:08.295] [TID:11] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2, 받은 데이터 크기: 9
+[2022/12/23 18:18:11.714] [TID:13] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 a7631670-db85-41d2-872d-ab0db5df25e2 접속해제: SocketError
+[2022/12/23 18:18:13.734] [TID:13] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 4694063b-9eaf-403f-8d92-2a11f28ae5b1 접속
+[2022/12/23 18:18:18.619] [TID:13] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 4694063b-9eaf-403f-8d92-2a11f28ae5b1 접속해제: SocketError
+[2022/12/23 18:19:21.909] [TID:17] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 e52195f3-24c2-4ae3-a293-b2841ddb0281 접속
+[2022/12/23 18:19:26.600] [TID:12] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 e52195f3-24c2-4ae3-a293-b2841ddb0281 접속해제: SocketError
+[2022/12/23 18:19:30.203] [TID:18] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 718e1c1f-8de3-49e7-91e3-46d02aa3cd06 접속
+[2022/12/23 18:19:31.100] [TID:18] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 718e1c1f-8de3-49e7-91e3-46d02aa3cd06 접속해제: SocketError
+[2022/12/23 18:19:32.004] [TID:18] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 c1b22384-9935-465a-a2c3-a34a886cfae3 접속
+[2022/12/23 18:19:32.696] [TID:18] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 c1b22384-9935-465a-a2c3-a34a886cfae3, 받은 데이터 크기: 9
+[2022/12/23 18:20:16.154] [TID:18] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 c1b22384-9935-465a-a2c3-a34a886cfae3, 받은 데이터 크기: 9
+[2022/12/23 18:20:18.458] [TID:22] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 c1b22384-9935-465a-a2c3-a34a886cfae3 접속해제: ClientClosing
+[2022/12/23 18:20:41.546] [TID:23] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4 접속
+[2022/12/23 18:20:42.582] [TID:27] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:20:48.087] [TID:27] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:20:56.383] [TID:27] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:21:11.331] [TID:27] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:21:11.932] [TID:27] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:21:12.256] [TID:27] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:00.750] [TID:26] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:02.018] [TID:26] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:02.734] [TID:26] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:03.268] [TID:26] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:19.284] [TID:26] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:24.607] [TID:26] [AppServerBase`2.ExecuteCommand => MainServer.RequestReceived => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4, 받은 데이터 크기: 9
+[2022/12/23 18:23:29.610] [TID:26] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 2f7961d2-8ca3-419c-a15f-5f28e7365dc4 접속해제: SocketError
+[2022/12/23 18:28:59.384] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2022/12/23 18:28:59.405] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2022/12/23 18:28:59.458] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServer has been started!
+[2022/12/23 18:28:59.458] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2022/12/23 18:28:59.458] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....

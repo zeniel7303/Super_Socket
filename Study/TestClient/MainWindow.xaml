@@ -11,7 +11,7 @@
         <Label Content="서버 주소:" HorizontalAlignment="Left" Height="32" Margin="22,46,0,0" VerticalAlignment="Top" Width="66"/>
         <TextBox x:Name="textBoxIP" HorizontalAlignment="Left" Height="23" Margin="92,50,0,0" TextWrapping="Wrap" Text="127.0.0.1" VerticalAlignment="Top" Width="77"/>
         <Label Content="Port 번호:" HorizontalAlignment="Left" Height="32" Margin="170,46,0,0" VerticalAlignment="Top" Width="62"/>
-        <TextBox x:Name="textBoxPort" HorizontalAlignment="Left" Height="23" Margin="236,50,0,0" TextWrapping="Wrap" Text="12345" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="textBoxPort" HorizontalAlignment="Left" Height="23" Margin="236,50,0,0" TextWrapping="Wrap" Text="12021" VerticalAlignment="Top" Width="77"/>
         <Label x:Name="labelConnState" Content="서버 상태:" HorizontalAlignment="Left" Height="27" Margin="164,23,0,0" VerticalAlignment="Top" Width="329"/>
 
         <GroupBox Header="로그인" HorizontalAlignment="Left" Height="48" Margin="10,84,0,0" VerticalAlignment="Top" Width="484" Grid.ColumnSpan="2"/>
@@ -20,11 +20,10 @@
         <TextBox x:Name="textBoxID" HorizontalAlignment="Left" Height="25" Margin="68,101,0,0" TextWrapping="Wrap" Text="test1" VerticalAlignment="Top" Width="87"/>
         <TextBox x:Name="textBoxPW" HorizontalAlignment="Left" Height="25" Margin="219,102,0,0" TextWrapping="Wrap" Text="1234" VerticalAlignment="Top" Width="87" Grid.ColumnSpan="2"/>
         <Button Content="접속" HorizontalAlignment="Left" Height="26" Margin="320,101,0,0" VerticalAlignment="Top" Width="37" Click="Button_Click"/>
-        <Button Content="로그인" Height="26" Margin="365,101,368,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <Button Content="접속 끊기" HorizontalAlignment="Right" Height="26" Margin="0,101,292,0" VerticalAlignment="Top" Width="64" Click="Button_Click_2"/>
+        <Button Content="접속 끊기" HorizontalAlignment="Right" Height="26" Margin="0,101,353,0" VerticalAlignment="Top" Click="Button_Click_1" RenderTransformOrigin="-0.515,0.667"/>
 
         <ListBox x:Name="listBoxLog" HorizontalAlignment="Left" Height="111" Margin="10,137,0,0" VerticalAlignment="Top" Width="484" d:LayoutOverrides="VerticalAlignment"/>
-        
+
         <TextBox x:Name="textBoxEcho" HorizontalAlignment="Left" Height="25" Margin="10,253,0,0" TextWrapping="Wrap" Text="echo test" VerticalAlignment="Top" Width="353"/>
         <Button Content="Echo" Height="26" Margin="368,252,365,0" VerticalAlignment="Top" Click="Button_Click_Echo" RenderTransformOrigin="0.836,2.049"/>
     </Grid>

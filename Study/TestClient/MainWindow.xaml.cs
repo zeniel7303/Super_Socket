@@ -267,17 +267,34 @@ namespace TestClient
         // 접속 끊기
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Log.Write($"서버 접속 끊기", LOG_LEVEL.INFO);
-
             ClientState = CLIENT_STATE.NONE;
-            labelConnState.Content = string.Format("{0}. 서버 접속 종료", DateTime.Now);
             SetDisconnectd();
             Network.Close();
+
+            labelConnState.Content = string.Format("{0}. 서버 접속 종료", DateTime.Now);
         }
 
         private void Button_Click_Echo(object sender, RoutedEventArgs e)
         {
             RequestEcho(textBoxEcho.Text);
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Network.Close();
+
+            IsNetworkThreadRunning = false;
+            IsMainProcessRunning = false;
+
+            if (NetworkReadThread.IsAlive)
+            {
+                NetworkReadThread.Join();
+            }
+
+            if (NetworkSendThread.IsAlive)
+            {
+                NetworkSendThread.Join();
+            }
         }
     }
 }

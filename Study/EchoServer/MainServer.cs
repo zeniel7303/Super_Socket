@@ -32,13 +32,22 @@ namespace EchoServer
         // SuperSocket이 동작하기 위해 정보 전달
         public void InitConfig(ServerOption option)
         {
+            //m_Config = new ServerConfig
+            //{
+            //    Port = option.Port,
+            //    Ip = "Any",
+            //    MaxConnectionNumber = option.MaxConnectionNumber,
+            //    Mode = SocketMode.Tcp,
+            //    Name = option.Name
+            //};
+
             m_Config = new ServerConfig
             {
-                Port = option.Port,
+                Port = 12021,
                 Ip = "Any",
-                MaxConnectionNumber = option.MaxConnectionNumber,
+                MaxConnectionNumber = 64,
                 Mode = SocketMode.Tcp,
-                Name = option.Name
+                Name = "EchoServer"
             };
         }
 
