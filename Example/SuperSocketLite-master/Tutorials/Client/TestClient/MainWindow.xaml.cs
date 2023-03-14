@@ -226,7 +226,7 @@ namespace ChatClient2
         {
             var body = message.ToByteArray();
 
-            DevLog.Write($"서버에 Echo 요청. BodySize:{body.Length}", LOG_LEVEL.INFO);
+            DevLog.Write($"서버에 Echo 요청. BodySize : {body.Length}", LOG_LEVEL.INFO);
             
             var sendData = CSBaseLib.PacketToBytes.Make(CSBaseLib.PACKETID.REQ_RES_TEST_ECHO, body);
             PostSendPacket(sendData);
