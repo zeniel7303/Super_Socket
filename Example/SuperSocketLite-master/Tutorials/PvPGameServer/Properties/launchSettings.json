@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "PvPGameServer": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 12021 --maxConnectionNumber 32 --name EchoServer"
-    }
-  }
-}
