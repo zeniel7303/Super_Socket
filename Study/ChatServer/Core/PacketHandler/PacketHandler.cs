@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using MessagePack;
+
 using CSBaseLib;
 
 namespace ChatServer
@@ -17,15 +19,6 @@ namespace ChatServer
         {
             mainServer = _mainServer;
             userManager = _userManager;
-        }
-    }
-
-    public class PKH_Common : PacketHandler
-    {
-        public void RegisterPacketHandler(
-            Dictionary<int, Action<ServerPacketData>> _packetHandlerMap)
-        {
-
         }
     }
 }

@@ -18,9 +18,8 @@ namespace ChatServer
 
             for(int i = 0; i < maxRoomCount; i++)
             {
-                var roomNumber = startNumber + i;
                 var room = new Room();
-                room.Init(i, roomNumber, maxUserCount);
+                room.Init(i, startNumber + i, maxUserCount);
 
                 roomList.Add(room);
             }

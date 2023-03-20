@@ -55,7 +55,7 @@ namespace ChatServer
 
                 if (bResult == false)
                 {
-                    Console.WriteLine("[ERROR] 서버 네트워크 설정 실패 ㅠㅠ");
+                    Console.WriteLine("[ERROR] 서버 네트워크 설정 실패");
                     return;
                 }
                 else

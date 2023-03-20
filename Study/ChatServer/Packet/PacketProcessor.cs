@@ -68,11 +68,23 @@ namespace ChatServer
             {
                 try
                 {
+                    var packet = msgBuffer.Receive();
 
+                    if(packetHandlerMap.ContainsKey(packet.packetID))
+                    {
+                        packetHandlerMap[packet.packetID](packet);
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("세션 번호 {0}, PacketID {1}, 받은 데이터 크기: {2}", 
+                            packet.sessionID, 
+                            packet.packetID, packet.
+                            bodyData.Length);
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    isThreadRunning.IfTrue(() => MainServer.mainLogger.Error(ex.ToString()));
                 }
             }
         }

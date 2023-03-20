@@ -35,6 +35,20 @@ namespace CSBaseLib
 
     public enum PACKETID : int
     {
-        REQ_RES_TEST_ECHO = 1001,
+        NOTIFY_CONNECT = 10001,
+        NOTIFY_DISCONNECT = 10002,
+
+        REQ_LOGIN,
+        RES_LOGIN,
+
+        REQ_ROOM_ENTER,
+        RES_ROOM_ENTER,
+
+        REQ_ROOM_LEAVE,
+        RES_ROOM_LEAVE,
+        NOTIFY_ROOM_LEAVE,
+
+        REQ_ROOM_CHAT,
+        BRD_ROOM_CHAT,
     }
 }

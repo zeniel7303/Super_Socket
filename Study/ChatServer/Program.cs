@@ -14,7 +14,6 @@ namespace ChatServer
                 return;
             }
 
-
             var serverApp = new MainServer();
             serverApp.InitConfig(serverOption);
 

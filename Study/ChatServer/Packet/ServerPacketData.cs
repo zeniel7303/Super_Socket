@@ -10,7 +10,7 @@ namespace ChatServer
 {
     public class ServerPacketData
     {
-        public Int16 pakcetSize;
+        public Int16 packetSize;
         public string sessionID;
         public Int16 packetID;
         public SByte type;
