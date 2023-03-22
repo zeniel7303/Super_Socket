@@ -57,7 +57,7 @@ namespace CSBaseLib
 
     // 로그인 요청
     [MessagePackObject]
-    public class PKTReqLogin
+    public class PKT_ReqLogin
     {
         [Key(0)]
         public string UserID;
@@ -66,75 +66,70 @@ namespace CSBaseLib
     }
 
     [MessagePackObject]
-    public class PKTResLogin
+    public class PKT_ResLogin
     {
         [Key(0)]
         public short Result;
     }
 
     [MessagePackObject]
-    public class PKNtfMustClose
-    {
-        [Key(0)]
-        public short Result;
-    }
-
-    [MessagePackObject]
-    public class PKTReqRoomEnter
-    {
-        [Key(0)]
-        public int RoomNumber;
-    }
-
-    [MessagePackObject]
-    public class PKTResRoomEnter
-    {
-        [Key(0)]
-        public short Result;
-    }
-
-    [MessagePackObject]
-    public class PKTNtfRoomUserList
+    public class PKT_NotifyRoomUserList
     {
         [Key(0)]
         public List<string> UserIDList = new List<string>();
     }
 
     [MessagePackObject]
-    public class PKTNtfRoomNewUser
+    public class PKT_ReqEnterRoom
     {
         [Key(0)]
-        public string UserID;
+        public int RoomNumber;
     }
 
     [MessagePackObject]
-    public class PKTReqRoomLeave
-    {
-    }
-
-    [MessagePackObject]
-    public class PKTResRoomLeave
+    public class PKT_ResEnterRoom
     {
         [Key(0)]
         public short Result;
     }
 
     [MessagePackObject]
-    public class PKTNtfRoomLeaveUser
+    public class PKT_NotifyEnterRoom
     {
         [Key(0)]
         public string UserID;
     }
 
     [MessagePackObject]
-    public class PKTReqRoomChat
+    public class PKT_ReqLeaveRoom
+    {
+    }
+
+    [MessagePackObject]
+    public class PKT_ResLeaveRoom
+    {
+        [Key(0)]
+        public short Result;
+    }
+
+    [MessagePackObject]
+    public class PKT_NofityLeaveRoom
+    {
+        [Key(0)]
+        public string UserID;
+    }
+
+
+    [MessagePackObject]
+    public class PKT_ReqRoomChat
     {
         [Key(0)]
         public string ChatMessage;
     }
 
+
     [MessagePackObject]
-    public class PKTNtfRoomChat
+    public class PKT_NofityRoomChat
     {
         [Key(0)]
         public string UserID;

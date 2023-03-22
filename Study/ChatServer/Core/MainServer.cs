@@ -96,9 +96,9 @@ namespace ChatServer
             return CSBaseLib.ERROR_CODE.NONE;
         }
 
-        public bool SendData(string sessionID, byte[] sendData)
+        public bool SendData(string _sessionID, byte[] _sendData)
         {
-            var session = GetSessionByID(sessionID);
+            var session = GetSessionByID(_sessionID);
 
             try
             {
@@ -107,7 +107,7 @@ namespace ChatServer
                     return false;
                 }
 
-                session.Send(sendData, 0, sendData.Length);
+                session.Send(_sendData, 0, _sendData.Length);
             }
             catch (Exception ex)
             {
@@ -120,21 +120,40 @@ namespace ChatServer
             return true;
         }
 
-        public void Distribute(ServerPacketData requestPacket)
+        public void Distribute(ServerPacketData _requestPacket)
         {
-            mainPacketProcessor.InsertPacket(requestPacket);
+            mainPacketProcessor.InsertPacket(_requestPacket);
         }
 
-        void OnConnected(ClientSession session)
+        void OnConnected(ClientSession _session)
         {
+            //옵션의 최대 연결 수를 넘으면 SuperSocket이 바로 접속을 짤라버린다. 즉 이 OnConneted 함수가 호출되지 않는다
+            mainLogger.Info(string.Format("세션 번호 {0} 접속", _session.SessionID));
+
+            var packet = ServerPacketData.NotifyConnectOrDisConnectClientPacket(true, _session.SessionID);
+            Distribute(packet);
         }
 
-        void OnClosed(ClientSession session, CloseReason reason)
+        void OnClosed(ClientSession _session, CloseReason _reason)
         {
+            mainLogger.Info(string.Format("세션 번호 {0} 접속해제: {1}", _session.SessionID, _reason.ToString()));
+
+            var packet = ServerPacketData.NotifyConnectOrDisConnectClientPacket(false, _session.SessionID);
+            Distribute(packet);
         }
 
-        void OnPacketReceived(ClientSession session, EFBinaryRequestInfo reqInfo)
+        void OnPacketReceived(ClientSession _session, EFBinaryRequestInfo _reqInfo)
         {
+            mainLogger.Debug(string.Format("세션 번호 {0} 받은 데이터 크기: {1}, ThreadId: {2}", _session.SessionID, _reqInfo.Body.Length, System.Threading.Thread.CurrentThread.ManagedThreadId));
+
+            var packet = new ServerPacketData();
+            packet.sessionID = _session.SessionID;
+            packet.packetSize = _reqInfo.packetSize;
+            packet.packetID = _reqInfo.packetId;
+            packet.type = _reqInfo.type;
+            packet.bodyData = _reqInfo.Body;
+
+            Distribute(packet);
         }
     }
 

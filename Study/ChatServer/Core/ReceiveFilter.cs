@@ -15,14 +15,14 @@ namespace ChatServer
         // 패킷 헤더용 변수
         public Int16 packetSize { get; private set; }
         public Int16 packetId { get; private set; }
-        public SByte value { get; private set; }
+        public SByte type { get; private set; }
 
-        public EFBinaryRequestInfo(Int16 _packetSize, Int16 _packetId, SByte _value, byte[] body)
+        public EFBinaryRequestInfo(Int16 _packetSize, Int16 _packetId, SByte _type, byte[] body)
             : base(null, body)
         {
             packetSize = _packetSize;
             packetId = _packetId;
-            value = _value;
+            type = _type;
         }
     }
 

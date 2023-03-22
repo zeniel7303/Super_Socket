@@ -65,6 +65,60 @@ namespace ChatServer
         {
             return userList.Count();
         }
+
+        public void NotifyUserList(string _userNetSessionID)
+        {
+            var packet = new CSBaseLib.PKT_NotifyRoomUserList();
+            foreach (var user in userList)
+            {
+                packet.UserIDList.Add(user.userID);
+            }
+
+            var bodyData = MessagePackSerializer.Serialize(packet);
+            var sendPacket = PacketToBytes.Make(PACKETID.NOTIFY_ROOM_USERLIST, bodyData);
+
+            netSendFunc(_userNetSessionID, sendPacket);
+        }
+
+        public void NofifyEnterRoom(string _newUserNetSessionID, string newUserID)
+        {
+            var packet = new PKT_NotifyEnterRoom();
+            packet.UserID = newUserID;
+
+            var bodyData = MessagePackSerializer.Serialize(packet);
+            var sendPacket = PacketToBytes.Make(PACKETID.NOTIFY_ENTER_ROOM, bodyData);
+
+            Broadcast(_newUserNetSessionID, sendPacket);
+        }
+
+        public void NotifyLeaveRoom(string _userID)
+        {
+            if (CurrentUserCount() == 0)
+            {
+                return;
+            }
+
+            var packet = new PKT_NofityLeaveRoom();
+            packet.UserID = _userID;
+
+            var bodyData = MessagePackSerializer.Serialize(packet);
+            var sendPacket = PacketToBytes.Make(PACKETID.NOTIFY_LEAVE_ROOM, bodyData);
+
+            Broadcast("", sendPacket);
+        }
+
+        public void Broadcast(string excludeNetSessionID, byte[] sendPacket)
+        {
+            foreach (var user in userList)
+            {
+                if (user.netSessionID == excludeNetSessionID)
+                {
+                    continue;
+                }
+
+                netSendFunc(user.netSessionID, sendPacket);
+            }
+        }
     }
 
     public class RoomUser

@@ -41,14 +41,18 @@ namespace CSBaseLib
         REQ_LOGIN,
         RES_LOGIN,
 
-        REQ_ROOM_ENTER,
-        RES_ROOM_ENTER,
+        REQ_ENTER_ROOM,
+        RES_ENTER_ROOM,
+        NOTIFY_ENTER_ROOM,
 
-        REQ_ROOM_LEAVE,
-        RES_ROOM_LEAVE,
-        NOTIFY_ROOM_LEAVE,
+        REQ_LEAVE_ROOM,
+        RES_LEAVE_ROOM,
+        NOTIFY_LEAVE_ROOM,
 
         REQ_ROOM_CHAT,
         BRD_ROOM_CHAT,
+        NOTIFY_ROOM_CHAT,
+
+        NOTIFY_ROOM_USERLIST,
     }
 }

@@ -36,7 +36,7 @@ namespace ChatServer
 
                 if (roomNum != PacketDef.INVALID_ROOM_NUMBER)
                 {
-                    var packet = new PKTInternalNtfRoomLeave()
+                    var packet = new PKTMake_NofityLeaveRoom()
                     {
                         RoomNumber = roomNum,
                         UserID = user.ID(),
@@ -44,7 +44,7 @@ namespace ChatServer
 
                     var packetBodyData = MessagePackSerializer.Serialize(packet);
                     var internalPacket = new ServerPacketData();
-                    internalPacket.Assign(sessionID, (Int16)PACKETID.NOTIFY_ROOM_LEAVE, packetBodyData);
+                    internalPacket.Assign(sessionID, (Int16)PACKETID.NOTIFY_LEAVE_ROOM, packetBodyData);
 
                     mainServer.Distribute(internalPacket);
                 }
@@ -67,7 +67,7 @@ namespace ChatServer
                     return;
                 }
 
-                var reqData = MessagePackSerializer.Deserialize<PKTReqLogin>(_data.bodyData);
+                var reqData = MessagePackSerializer.Deserialize<PKT_ReqLogin>(_data.bodyData);
                 var errorCode = userManager.AddUser(reqData.UserID, sessionID);
                 if (errorCode != ERROR_CODE.NONE)
                 {
@@ -75,7 +75,7 @@ namespace ChatServer
 
                     if (errorCode == ERROR_CODE.LOGIN_FULL_USER_COUNT)
                     {
-                        NotifyMustCloseToClient(ERROR_CODE.LOGIN_FULL_USER_COUNT, _data.sessionID);
+                        //NotifyMustCloseToClient(ERROR_CODE.LOGIN_FULL_USER_COUNT, _data.sessionID);
                     }
 
                     return;
@@ -95,7 +95,7 @@ namespace ChatServer
 
         public void ResponseLogin(ERROR_CODE errorCode, string sessionID)
         {
-            var resLogin = new PKTResLogin()
+            var resLogin = new PKT_ResLogin()
             {
                 Result = (short)errorCode
             };

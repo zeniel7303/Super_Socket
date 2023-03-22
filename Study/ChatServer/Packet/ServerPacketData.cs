@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CSBaseLib;
 using MessagePack;
 
 namespace ChatServer
@@ -27,23 +28,33 @@ namespace ChatServer
             }
         }
 
-        public static ServerPacketData MakeNTFInConnectOrDisConnectClientPacket(
+        public static ServerPacketData NotifyConnectOrDisConnectClientPacket(
             bool isConnect, string sessionID)
         {
             var packet = new ServerPacketData();
 
             if (isConnect)
             {
-               // packet.PacketID = (Int32)CSBaseLib.PACKETID
+                packet.packetID = (Int32)PACKETID.NOTIFY_CONNECT;
             }
             else
             {
-                //packet.PacketID = (Int32)CSBaseLib.PACKETID
+                packet.packetID = (Int32)PACKETID.NOTIFY_DISCONNECT;
             }
 
             packet.sessionID = sessionID;
 
             return packet;
         }
+    }
+
+    [MessagePackObject]
+    public class PKTMake_NofityLeaveRoom
+    {
+        [Key(0)]
+        public int RoomNumber;
+
+        [Key(1)]
+        public string UserID;
     }
 }
