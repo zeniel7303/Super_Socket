@@ -12,7 +12,7 @@ namespace ChatServer
 {
     public class PacketHandler_Common : PacketHandler
     {
-        public void RegisterPacketHandler(
+        public void RegistPacketHandler(
             Dictionary<int, Action<ServerPacketData>> _packetHandlerMap)
         {
             _packetHandlerMap.Add((int)PACKETID.NOTIFY_CONNECT, NotifyConnect);

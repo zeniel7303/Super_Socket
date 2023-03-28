@@ -68,6 +68,7 @@ namespace ChatServer
 
                 CreateComponent();
 
+                // SuperSocket의 Start
                 Start();
 
                 MainLogger.Info("서버 생성 성공");
@@ -143,9 +144,12 @@ namespace ChatServer
             Distribute(packet);
         }
 
+        // SuperSocket에서 멀티쓰레드로 호출됨.
+        // 여기서 패킷을 그대로 처리를 하면 동기화 문제가 발생함.
         void OnPacketReceived(ClientSession _session, EFBinaryRequestInfo _reqInfo)
         {
-            MainLogger.Debug(string.Format("세션 번호 {0} 받은 데이터 크기: {1}, ThreadId: {2}", _session.SessionID, _reqInfo.Body.Length, System.Threading.Thread.CurrentThread.ManagedThreadId));
+            MainLogger.Debug(string.Format("세션 번호 {0} 받은 데이터 크기: {1}, ThreadId: {2}", 
+                _session.SessionID, _reqInfo.Body.Length, System.Threading.Thread.CurrentThread.ManagedThreadId));
 
             var packet = new ServerPacketData();
             packet.SessionID = _session.SessionID;
