@@ -11,7 +11,7 @@
           "CSBaseLib": "1.0.0",
           "CommandLineParser": "2.9.1",
           "MessagePack": "2.4.59",
-          "NLog.Extensions.Logging": "5.2.1",
+          "NLog.Extensions.Logging": "5.2.2",
           "System.Configuration.ConfigurationManager": "7.0.0",
           "Z.ExtensionMethods": "2.1.1",
           "SuperSocketLite": "0.15.0.0"
@@ -162,24 +162,24 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
-      "NLog/5.1.1": {
+      "NLog/5.1.2": {
         "runtime": {
           "lib/netstandard2.0/NLog.dll": {
             "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.1.1.1522"
+            "fileVersion": "5.1.2.1561"
           }
         }
       },
-      "NLog.Extensions.Logging/5.2.1": {
+      "NLog.Extensions.Logging/5.2.2": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.0",
           "Microsoft.Extensions.Logging": "3.1.0",
-          "NLog": "5.1.1"
+          "NLog": "5.1.2"
         },
         "runtime": {
           "lib/netstandard2.1/NLog.Extensions.Logging.dll": {
             "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.2.1.300"
+            "fileVersion": "5.2.2.309"
           }
         }
       },
@@ -459,19 +459,19 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
-    "NLog/5.1.1": {
+    "NLog/5.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YBfUDzipCaucs+8ieCDp8XECumiWsQbZwSUVLlt9i7FGV03nOPqoVzLtmlhbTxq4TN92BBsLacqPAE/ZyDDJ1g==",
-      "path": "nlog/5.1.1",
-      "hashPath": "nlog.5.1.1.nupkg.sha512"
+      "sha512": "sha512-JfQY93ure3IPVTN3eabBewBGvrcXcWIlaesFEXdy5UzIymfIT9yCgLISYtM0cOhjWziIaUr/6Z9NC2RwtjwrsQ==",
+      "path": "nlog/5.1.2",
+      "hashPath": "nlog.5.1.2.nupkg.sha512"
     },
-    "NLog.Extensions.Logging/5.2.1": {
+    "NLog.Extensions.Logging/5.2.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b16cdOklZ3gfeuiyewsAmR2It/55Ar+plwsyo7CjgfwZtH1c5B2ZyYIGt1Ho+fPMOKEHkPU/trXZqAg9Oipiiw==",
-      "path": "nlog.extensions.logging/5.2.1",
-      "hashPath": "nlog.extensions.logging.5.2.1.nupkg.sha512"
+      "sha512": "sha512-V6sd+0Hrk2XlU//XbUizFYTE8Hf8+xFkhi81shIhsKl4tvWFUYmjBY/zBy/wlQCt0K6mfseaEKnayRJVhIz5Iw==",
+      "path": "nlog.extensions.logging/5.2.2",
+      "hashPath": "nlog.extensions.logging.5.2.2.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",

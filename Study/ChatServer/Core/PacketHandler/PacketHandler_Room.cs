@@ -12,25 +12,25 @@ namespace ChatServer
 {
     public class PacketHandler_Room : PacketHandler
     {
-        List<Room> roomList = null;
-        int startRoomNumber;
+        List<Room> RoomList = null;
+        int StartRoomNumber;
 
         public void SetRooomList(List<Room> _roomList)
         {
-            roomList = _roomList;
-            startRoomNumber = roomList[0].number;
+            RoomList = _roomList;
+            StartRoomNumber = RoomList[0].Number;
         }
 
         Room GetRoom(int _roomNumber)
         {
-            var index = _roomNumber - startRoomNumber;
+            var index = _roomNumber - StartRoomNumber;
 
-            if (index < 0 || index >= roomList.Count())
+            if (index < 0 || index >= RoomList.Count())
             {
                 return null;
             }
 
-            return roomList[index];
+            return RoomList[index];
         }
 
         public void RegistPacketHandler(
@@ -44,12 +44,12 @@ namespace ChatServer
 
         public void RequestEnterRoom(ServerPacketData _data)
         {
-            var sessionID = _data.sessionID;
-            MainServer.mainLogger.Debug("RequestRoomEnter");
+            var sessionID = _data.SessionID;
+            MainServer.MainLogger.Debug("RequestRoomEnter");
 
             try
             {
-                var user = userManager.GetUser(sessionID);
+                var user = UserManager.GetUser(sessionID);
 
                 if (user == null || user.IsConfirm(sessionID) == false)
                 {
@@ -63,7 +63,7 @@ namespace ChatServer
                     return;
                 }
 
-                var reqData = MessagePackSerializer.Deserialize<PKT_ReqEnterRoom>(_data.bodyData);
+                var reqData = MessagePackSerializer.Deserialize<PKT_ReqEnterRoom>(_data.BodyData);
 
                 var room = GetRoom(reqData.RoomNumber);
 
@@ -84,11 +84,11 @@ namespace ChatServer
                 room.NotifyUserList(sessionID);
                 room.NofifyEnterRoom(sessionID, user.ID());
 
-                MainServer.mainLogger.Debug("RequestEnterInternal - Success");
+                MainServer.MainLogger.Debug("RequestEnterInternal - Success");
             }
             catch (Exception ex)
             {
-                MainServer.mainLogger.Error(ex.ToString());
+                MainServer.MainLogger.Error(ex.ToString());
             }
         }
 
@@ -102,17 +102,17 @@ namespace ChatServer
             var bodyData = MessagePackSerializer.Serialize(resRoomEnter);
             var sendData = PacketToBytes.Make(PACKETID.RES_ENTER_ROOM, bodyData);
 
-            mainServer.SendData(sessionID, sendData);
+            MainServer.SendData(sessionID, sendData);
         }
 
         public void RequestLeaveRoom(ServerPacketData _data)
         {
-            var sessionID = _data.sessionID;
-            MainServer.mainLogger.Debug("로그인 요청 받음");
+            var sessionID = _data.SessionID;
+            MainServer.MainLogger.Debug("로그인 요청 받음");
 
             try
             {
-                var user = userManager.GetUser(sessionID);
+                var user = UserManager.GetUser(sessionID);
                 if (user == null)
                 {
                     return;
@@ -127,17 +127,17 @@ namespace ChatServer
 
                 ResponseLeaveRoom(sessionID);
 
-                MainServer.mainLogger.Debug("Room RequestLeave - Success");
+                MainServer.MainLogger.Debug("Room RequestLeave - Success");
             }
             catch (Exception ex)
             {
-                MainServer.mainLogger.Error(ex.ToString());
+                MainServer.MainLogger.Error(ex.ToString());
             }
         }
 
         bool LeaveRoomUser(string _sessionID, int _roomNumber)
         {
-            MainServer.mainLogger.Debug($"LeaveRoomUser. SessionID:{_sessionID}");
+            MainServer.MainLogger.Debug($"LeaveRoomUser. SessionID:{_sessionID}");
 
             var room = GetRoom(_roomNumber);
             if (room == null)
@@ -168,21 +168,21 @@ namespace ChatServer
             var bodyData = MessagePackSerializer.Serialize(resRoomLeave);
             var sendData = PacketToBytes.Make(PACKETID.RES_LEAVE_ROOM, bodyData);
 
-            mainServer.SendData(_sessionID, sendData);
+            MainServer.SendData(_sessionID, sendData);
         }
         
         public void NotifyLeave(ServerPacketData _packetData)
         {
-            var sessionID = _packetData.sessionID;
-            MainServer.mainLogger.Debug($"NotifyLeaveInternal. SessionID: {sessionID}");
+            var sessionID = _packetData.SessionID;
+            MainServer.MainLogger.Debug($"NotifyLeaveInternal. SessionID: {sessionID}");
 
-            var reqData = MessagePackSerializer.Deserialize<PKTMake_NofityLeaveRoom>(_packetData.bodyData);
+            var reqData = MessagePackSerializer.Deserialize<PKTMake_NofityLeaveRoom>(_packetData.BodyData);
             LeaveRoomUser(sessionID, reqData.RoomNumber);
         }
 
         (bool, Room, RoomUser) CheckRoomAndRoomUser(string userNetSessionID)
         {
-            var user = userManager.GetUser(userNetSessionID);
+            var user = UserManager.GetUser(userNetSessionID);
             if (user == null)
             {
                 return (false, null, null);
@@ -208,8 +208,8 @@ namespace ChatServer
 
         public void RequestChat(ServerPacketData _data)
         {
-            var sessionID = _data.sessionID;
-            MainServer.mainLogger.Debug("Room RequestChat");
+            var sessionID = _data.SessionID;
+            MainServer.MainLogger.Debug("Room RequestChat");
 
             try
             {
@@ -221,7 +221,7 @@ namespace ChatServer
                 }
 
 
-                var reqData = MessagePackSerializer.Deserialize<PKT_ReqRoomChat>(_data.bodyData);
+                var reqData = MessagePackSerializer.Deserialize<PKT_ReqRoomChat>(_data.BodyData);
 
                 var notifyPacket = new PKT_NofityRoomChat()
                 {
@@ -234,11 +234,11 @@ namespace ChatServer
 
                 roomObject.Item2.Broadcast("", sendData);
 
-                MainServer.mainLogger.Debug("Room RequestChat - Success");
+                MainServer.MainLogger.Debug("Room RequestChat - Success");
             }
             catch (Exception ex)
             {
-                MainServer.mainLogger.Error(ex.ToString());
+                MainServer.MainLogger.Error(ex.ToString());
             }
         }
     }

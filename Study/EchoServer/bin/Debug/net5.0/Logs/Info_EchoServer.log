@@ -88,3 +88,8 @@
 [2023/02/14 12:04:08.332] [TID:4] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 af8c249f-55fb-48a7-a90e-3f7f3fa711a0 접속해제: ClientClosing
 [2023/02/14 12:10:02.620] [TID:4] [<>c__DisplayClass108_0.<OnNewSessionConnected>b__0 => MainServer.OnConnected => NLogLog.Info]: 세션 번호 74ec9c11-797d-432b-85c5-6f2b29cbcd00 접속
 [2023/02/14 12:10:29.976] [TID:14] [<>c__DisplayClass116_0.<OnSessionClosed>b__0 => MainServer.OnClosed => NLogLog.Info]: 세션 번호 74ec9c11-797d-432b-85c5-6f2b29cbcd00 접속해제: SocketError
+[2023/03/28 16:16:07.662] [TID:1] [MainServer.CreateServer => MainServer.RegistHandler => NLogLog.Info]: 핸들러 등록 완료
+[2023/03/28 16:16:25.396] [TID:1] [Program.Main => MainServer.CreateServer => NLogLog.Info]: 서버 생성 성공
+[2023/03/28 16:16:27.623] [TID:1] [AppServer`2.Start => AppServerBase`2.Start => NLogLog.Info]: The server instance EchoServer has been started!
+[2023/03/28 16:16:29.798] [TID:1] [Program.Main => NLogLog.Info]: 서버 네트워크 시작
+[2023/03/28 16:16:30.869] [TID:1] [Program.Main => NLogLog.Info]: key를 누르면 종료한다....

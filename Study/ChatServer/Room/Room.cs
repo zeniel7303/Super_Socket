@@ -10,20 +10,20 @@ namespace ChatServer
 {
     public class Room
     {
-        public int index { get; private set; }
-        public int number { get; private set; }
+        public int Index { get; private set; }
+        public int Number { get; private set; }
 
-        int maxUserCount = 0;
+        int MaxUserCount = 0;
 
-        List<RoomUser> userList = new List<RoomUser>();
+        List<RoomUser> UserList = new List<RoomUser>();
 
-        public static Func<string, byte[], bool> netSendFunc;
+        public static Func<string, byte[], bool> NetSendFunc;
     
         public void Init(int _index, int _number, int _maxUserCount)
         {
-            index = _index;
-            number = _number;
-            maxUserCount = _maxUserCount;
+            Index = _index;
+            Number = _number;
+            MaxUserCount = _maxUserCount;
         }
 
         public bool AddUser(string _userID, string _netSessionID)
@@ -35,41 +35,41 @@ namespace ChatServer
 
             var roomUser = new RoomUser();
             roomUser.Set(_userID, _netSessionID);
-            userList.Add(roomUser);
+            UserList.Add(roomUser);
 
             return true;
         }
 
         public void RemoveUser(string _netSessionID)
         {
-            var index = userList.FindIndex(x => x.netSessionID == _netSessionID);
-            userList.RemoveAt(index);
+            var index = UserList.FindIndex(x => x.netSessionID == _netSessionID);
+            UserList.RemoveAt(index);
         }
 
         public bool RemoveUser(RoomUser _user)
         {
-            return userList.Remove(_user);
+            return UserList.Remove(_user);
         }
 
         public RoomUser GetUser(string _userID)
         {
-            return userList.Find(x => x.userID == _userID);
+            return UserList.Find(x => x.userID == _userID);
         }
 
         public RoomUser GetUserByNetSessionID(string _netSessionID)
         {
-            return userList.Find(x => x.netSessionID == _netSessionID);
+            return UserList.Find(x => x.netSessionID == _netSessionID);
         }
 
         public int CurrentUserCount()
         {
-            return userList.Count();
+            return UserList.Count();
         }
 
         public void NotifyUserList(string _userNetSessionID)
         {
             var packet = new CSBaseLib.PKT_NotifyRoomUserList();
-            foreach (var user in userList)
+            foreach (var user in UserList)
             {
                 packet.UserIDList.Add(user.userID);
             }
@@ -77,7 +77,7 @@ namespace ChatServer
             var bodyData = MessagePackSerializer.Serialize(packet);
             var sendPacket = PacketToBytes.Make(PACKETID.NOTIFY_ROOM_USERLIST, bodyData);
 
-            netSendFunc(_userNetSessionID, sendPacket);
+            NetSendFunc(_userNetSessionID, sendPacket);
         }
 
         public void NofifyEnterRoom(string _newUserNetSessionID, string newUserID)
@@ -109,14 +109,14 @@ namespace ChatServer
 
         public void Broadcast(string excludeNetSessionID, byte[] sendPacket)
         {
-            foreach (var user in userList)
+            foreach (var user in UserList)
             {
                 if (user.netSessionID == excludeNetSessionID)
                 {
                     continue;
                 }
 
-                netSendFunc(user.netSessionID, sendPacket);
+                NetSendFunc(user.netSessionID, sendPacket);
             }
         }
     }

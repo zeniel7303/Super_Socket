@@ -12,13 +12,13 @@ namespace ChatServer
 {
     public class PacketHandler
     {
-        protected MainServer mainServer;
-        protected UserManager userManager;
+        protected MainServer MainServer;
+        protected UserManager UserManager;
 
         public void Init(MainServer _mainServer, UserManager _userManager)
         {
-            mainServer = _mainServer;
-            userManager = _userManager;
+            MainServer = _mainServer;
+            UserManager = _userManager;
         }
     }
 }

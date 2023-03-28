@@ -22,13 +22,13 @@ namespace ChatServer
 
         public void NotifyConnect(ServerPacketData _data)
         {
-            MainServer.mainLogger.Debug($"Current Connected Session Count: {mainServer.SessionCount}");
+            MainServer.MainLogger.Debug($"Current Connected Session Count: {MainServer.SessionCount}");
         }
 
         public void NotifyDisConnect(ServerPacketData _data)
         {
-            var sessionID = _data.sessionID;
-            var user = userManager.GetUser(sessionID);
+            var sessionID = _data.SessionID;
+            var user = UserManager.GetUser(sessionID);
 
             if (user != null)
             {
@@ -46,32 +46,32 @@ namespace ChatServer
                     var internalPacket = new ServerPacketData();
                     internalPacket.Assign(sessionID, (Int16)PACKETID.NOTIFY_LEAVE_ROOM, packetBodyData);
 
-                    mainServer.Distribute(internalPacket);
+                    MainServer.Distribute(internalPacket);
                 }
 
-                userManager.RemoveUser(sessionID);
+                UserManager.RemoveUser(sessionID);
             }
 
-            MainServer.mainLogger.Debug($"Current Connected Session Count: {mainServer.SessionCount}");
+            MainServer.MainLogger.Debug($"Current Connected Session Count: {MainServer.SessionCount}");
         }
         public void RequestLogin(ServerPacketData _data)
         {
-            var sessionID = _data.sessionID;
-            MainServer.mainLogger.Debug("로그인 요청 받음");
+            var sessionID = _data.SessionID;
+            MainServer.MainLogger.Debug("로그인 요청 받음");
 
             try
             {
-                if (userManager.GetUser(sessionID) != null)
+                if (UserManager.GetUser(sessionID) != null)
                 {
-                    ResponseLogin(ERROR_CODE.LOGIN_ALREADY_WORKING, _data.sessionID);
+                    ResponseLogin(ERROR_CODE.LOGIN_ALREADY_WORKING, _data.SessionID);
                     return;
                 }
 
-                var reqData = MessagePackSerializer.Deserialize<PKT_ReqLogin>(_data.bodyData);
-                var errorCode = userManager.AddUser(reqData.UserID, sessionID);
+                var reqData = MessagePackSerializer.Deserialize<PKT_ReqLogin>(_data.BodyData);
+                var errorCode = UserManager.AddUser(reqData.UserID, sessionID);
                 if (errorCode != ERROR_CODE.NONE)
                 {
-                    ResponseLogin(errorCode, _data.sessionID);
+                    ResponseLogin(errorCode, _data.SessionID);
 
                     if (errorCode == ERROR_CODE.LOGIN_FULL_USER_COUNT)
                     {
@@ -81,15 +81,15 @@ namespace ChatServer
                     return;
                 }
 
-                ResponseLogin(errorCode, _data.sessionID);
+                ResponseLogin(errorCode, _data.SessionID);
 
-                MainServer.mainLogger.Debug("로그인 요청 답변 보냄");
+                MainServer.MainLogger.Debug("로그인 요청 답변 보냄");
 
             }
             catch (Exception ex)
             {
                 // 패킷 해제에 의해서 로그가 남지 않도록 로그 수준을 Debug로 한다.
-                MainServer.mainLogger.Error(ex.ToString());
+                MainServer.MainLogger.Error(ex.ToString());
             }
         }
 
@@ -103,7 +103,7 @@ namespace ChatServer
             var bodyData = MessagePackSerializer.Serialize(resLogin);
             var sendData = PacketToBytes.Make(PACKETID.RES_LOGIN, bodyData);
 
-            mainServer.SendData(sessionID, sendData);
+            MainServer.SendData(sessionID, sendData);
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System;
+using CommandLine;
 
 namespace ChatServer
 {
     class Program
     {
         //dotnet ChatServer.dll --uniqueID 1 --roomMaxCount 16 --roomMaxUserCount 4 
-        //--roomStartNumber 1 --maxUserCount 100
+        //--roomStartNumber 1 --MaxUserCount 100
         static void Main(string[] args)
         {
             var serverOption = ParseCommandLine(args);
@@ -16,10 +17,9 @@ namespace ChatServer
 
             var serverApp = new MainServer();
             serverApp.InitConfig(serverOption);
-
             serverApp.CreateStartServer();
 
-            MainServer.mainLogger.Info("Press q to shut down the server");
+            MainServer.MainLogger.Info("Press Q to shut down the server");
 
             while (true)
             {
@@ -30,7 +30,7 @@ namespace ChatServer
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     if (key.KeyChar == 'q')
                     {
-                        Console.WriteLine("Server Terminate ~~~");
+                        Console.WriteLine("Server Terminate");
                         serverApp.StopServer();
                         break;
                     }

@@ -4,21 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using SuperSocket.SocketBase.Logging;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Protocol;
+using SuperSocket.SocketBase.Config;
+
 using SuperSocket.SocketEngine;
 
 namespace ChatServer
 {
     public class MainServer : AppServer<ClientSession, EFBinaryRequestInfo>
     {
-        public static ChatServerOption serverOption;
-        public static SuperSocket.SocketBase.Logging.ILog mainLogger;
+        public static ChatServerOption ServerOption;
+        public static ILog MainLogger;
 
-        SuperSocket.SocketBase.Config.IServerConfig m_config;
+        IServerConfig Config;
 
-        PacketProcessor mainPacketProcessor = new PacketProcessor();
-        RoomManager roomManager = new RoomManager();
+        PacketProcessor MainPacketProcessor = new PacketProcessor();
+        RoomManager RoomManager = new RoomManager();
 
         public MainServer()
             : base(new DefaultReceiveFilterFactory<ReceiveFilter, EFBinaryRequestInfo>())
@@ -30,9 +33,9 @@ namespace ChatServer
 
         public void InitConfig(ChatServerOption _option)
         {
-            serverOption = _option;
+            ServerOption = _option;
 
-            m_config = new SuperSocket.SocketBase.Config.ServerConfig
+            Config = new SuperSocket.SocketBase.Config.ServerConfig
             {
                 Name = _option.Name,
                 Ip = "Any",
@@ -50,8 +53,7 @@ namespace ChatServer
         {
             try
             {
-                bool bResult = Setup(new SuperSocket.SocketBase.Config.RootConfig(), 
-                    m_config, logFactory: new SuperSocket.SocketBase.Logging.NLogLogFactory());
+                bool bResult = Setup(new RootConfig(), Config, logFactory: new NLogLogFactory());
 
                 if (bResult == false)
                 {
@@ -60,16 +62,15 @@ namespace ChatServer
                 }
                 else
                 {
-                    mainLogger = base.Logger;
-                    mainLogger.Info("서버 초기화 성공");
+                    MainLogger = base.Logger;
+                    MainLogger.Info("서버 초기화 성공");
                 }
-
 
                 CreateComponent();
 
                 Start();
 
-                mainLogger.Info("서버 생성 성공");
+                MainLogger.Info("서버 생성 성공");
             }
             catch (Exception ex)
             {
@@ -81,18 +82,18 @@ namespace ChatServer
         {
             Stop();
 
-            mainPacketProcessor.Destroy();
+            MainPacketProcessor.Destroy();
         }
 
         public CSBaseLib.ERROR_CODE CreateComponent()
         {
-            Room.netSendFunc = this.SendData;
-            roomManager.CreateRooms();
+            Room.NetSendFunc = this.SendData;
+            RoomManager.CreateRooms();
 
-            mainPacketProcessor = new PacketProcessor();
-            mainPacketProcessor.CreateAndStart(roomManager.GetRoomList(), this);
+            MainPacketProcessor = new PacketProcessor();
+            MainPacketProcessor.CreateAndStart(RoomManager.GetRoomList(), this);
 
-            mainLogger.Info("CreateComponent - Success");
+            MainLogger.Info("CreateComponent - Success");
             return CSBaseLib.ERROR_CODE.NONE;
         }
 
@@ -112,7 +113,7 @@ namespace ChatServer
             catch (Exception ex)
             {
                 // TimeoutException 예외가 발생할 수 있다
-                MainServer.mainLogger.Error($"{ex.ToString()},  {ex.StackTrace}");
+                MainServer.MainLogger.Error($"{ex.ToString()},  {ex.StackTrace}");
 
                 session.SendEndWhenSendingTimeOut();
                 session.Close();
@@ -122,13 +123,13 @@ namespace ChatServer
 
         public void Distribute(ServerPacketData _requestPacket)
         {
-            mainPacketProcessor.InsertPacket(_requestPacket);
+            MainPacketProcessor.InsertPacket(_requestPacket);
         }
 
         void OnConnected(ClientSession _session)
         {
             //옵션의 최대 연결 수를 넘으면 SuperSocket이 바로 접속을 짤라버린다. 즉 이 OnConneted 함수가 호출되지 않는다
-            mainLogger.Info(string.Format("세션 번호 {0} 접속", _session.SessionID));
+            MainLogger.Info(string.Format("세션 번호 {0} 접속", _session.SessionID));
 
             var packet = ServerPacketData.NotifyConnectOrDisConnectClientPacket(true, _session.SessionID);
             Distribute(packet);
@@ -136,7 +137,7 @@ namespace ChatServer
 
         void OnClosed(ClientSession _session, CloseReason _reason)
         {
-            mainLogger.Info(string.Format("세션 번호 {0} 접속해제: {1}", _session.SessionID, _reason.ToString()));
+            MainLogger.Info(string.Format("세션 번호 {0} 접속해제: {1}", _session.SessionID, _reason.ToString()));
 
             var packet = ServerPacketData.NotifyConnectOrDisConnectClientPacket(false, _session.SessionID);
             Distribute(packet);
@@ -144,14 +145,14 @@ namespace ChatServer
 
         void OnPacketReceived(ClientSession _session, EFBinaryRequestInfo _reqInfo)
         {
-            mainLogger.Debug(string.Format("세션 번호 {0} 받은 데이터 크기: {1}, ThreadId: {2}", _session.SessionID, _reqInfo.Body.Length, System.Threading.Thread.CurrentThread.ManagedThreadId));
+            MainLogger.Debug(string.Format("세션 번호 {0} 받은 데이터 크기: {1}, ThreadId: {2}", _session.SessionID, _reqInfo.Body.Length, System.Threading.Thread.CurrentThread.ManagedThreadId));
 
             var packet = new ServerPacketData();
-            packet.sessionID = _session.SessionID;
-            packet.packetSize = _reqInfo.packetSize;
-            packet.packetID = _reqInfo.packetId;
-            packet.type = _reqInfo.type;
-            packet.bodyData = _reqInfo.Body;
+            packet.SessionID = _session.SessionID;
+            packet.PacketSize = _reqInfo.PacketSize;
+            packet.PacketID = _reqInfo.PacketId;
+            packet.Type = _reqInfo.Type;
+            packet.BodyData = _reqInfo.Body;
 
             Distribute(packet);
         }

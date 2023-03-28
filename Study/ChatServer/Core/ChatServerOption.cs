@@ -21,12 +21,15 @@ namespace ChatServer
         [Option("port", Required = true, HelpText = "Port")]
         public int Port { get; set; }
 
+        // 패킷 최대 크기
         [Option("maxRequestLength", Required = true, HelpText = "maxRequestLength")]
         public int MaxRequestLength { get; set; }
 
+        // SuperSocket의 ReceiveBuffer
         [Option("receiveBufferSize", Required = true, HelpText = "receiveBufferSize")]
         public int ReceiveBufferSize { get; set; }
 
+        // SuperSocket의 SendBuffer
         [Option("sendBufferSize", Required = true, HelpText = "sendBufferSize")]
         public int SendBufferSize { get; set; }
 

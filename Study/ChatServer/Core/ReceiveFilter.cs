@@ -13,16 +13,16 @@ namespace ChatServer
     public class EFBinaryRequestInfo : BinaryRequestInfo
     {
         // 패킷 헤더용 변수
-        public Int16 packetSize { get; private set; }
-        public Int16 packetId { get; private set; }
-        public SByte type { get; private set; }
+        public Int16 PacketSize { get; private set; }
+        public Int16 PacketId { get; private set; }
+        public SByte Type { get; private set; }
 
         public EFBinaryRequestInfo(Int16 _packetSize, Int16 _packetId, SByte _type, byte[] body)
             : base(null, body)
         {
-            packetSize = _packetSize;
-            packetId = _packetId;
-            type = _type;
+            PacketSize = _packetSize;
+            PacketId = _packetId;
+            Type = _type;
         }
     }
 
@@ -44,8 +44,8 @@ namespace ChatServer
                 Array.Reverse(header, offset, CSBaseLib.PacketDef.PACKET_HEADER_SIZE);
             }
 
-            var packetTotalSize = BitConverter.ToInt16(header, offset);
-            var bodySize = packetTotalSize - CSBaseLib.PacketDef.PACKET_HEADER_SIZE;
+            var packetSize = BitConverter.ToInt16(header, offset);
+            var bodySize = packetSize - CSBaseLib.PacketDef.PACKET_HEADER_SIZE;
             return bodySize;
         }
 

@@ -8,23 +8,23 @@ namespace ChatServer
 {
     class RoomManager
     {
-        List<Room> roomList = new List<Room>();
+        List<Room> RoomList = new List<Room>();
 
         public void CreateRooms()
         {
-            var maxRoomCount = MainServer.serverOption.RoomMaxCount;
-            var startNumber = MainServer.serverOption.RoomStartNumber;
-            var maxUserCount = MainServer.serverOption.RoomMaxUserCount;
+            var maxRoomCount = MainServer.ServerOption.RoomMaxCount;
+            var startNumber = MainServer.ServerOption.RoomStartNumber;
+            var MaxUserCount = MainServer.ServerOption.RoomMaxUserCount;
 
             for(int i = 0; i < maxRoomCount; i++)
             {
                 var room = new Room();
-                room.Init(i, startNumber + i, maxUserCount);
+                room.Init(i, startNumber + i, MaxUserCount);
 
-                roomList.Add(room);
+                RoomList.Add(room);
             }
         }
 
-        public List<Room> GetRoomList() { return roomList; }
+        public List<Room> GetRoomList() { return RoomList; }
     }
 }

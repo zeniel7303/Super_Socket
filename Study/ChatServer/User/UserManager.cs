@@ -8,14 +8,14 @@ namespace ChatServer
 {
     public class UserManager
     {
-        int maxUserCount;
-        UInt64 userSequenceNumber = 0;
+        int MaxUserCount;
+        UInt64 UserSequenceNumber = 0;
 
-        Dictionary<string, User> userMap = new Dictionary<string, User>();
+        Dictionary<string, User> UserMap = new Dictionary<string, User>();
 
         public void Init(int _maxUserCount)
         {
-            maxUserCount = _maxUserCount;
+            MaxUserCount = _maxUserCount;
         }
 
         public CSBaseLib.ERROR_CODE AddUser(string _userID, string _sessionID)
@@ -25,24 +25,23 @@ namespace ChatServer
                 return CSBaseLib.ERROR_CODE.LOGIN_FULL_USER_COUNT;
             }
 
-            if (userMap.ContainsKey(_sessionID))
+            if (UserMap.ContainsKey(_sessionID))
             {
                 return CSBaseLib.ERROR_CODE.ADD_USER_DUPLICATION;
             }
 
-
-            ++userSequenceNumber;
+            ++UserSequenceNumber;
 
             var user = new User();
-            user.Set(userSequenceNumber, _sessionID, _userID);
-            userMap.Add(_sessionID, user);
+            user.Set(UserSequenceNumber, _sessionID, _userID);
+            UserMap.Add(_sessionID, user);
 
             return CSBaseLib.ERROR_CODE.NONE;
         }
 
         public CSBaseLib.ERROR_CODE RemoveUser(string _sessionID)
         {
-            if (userMap.Remove(_sessionID) == false)
+            if (UserMap.Remove(_sessionID) == false)
             {
                 return CSBaseLib.ERROR_CODE.REMOVE_USER_SEARCH_FAILURE_USER_ID;
             }
@@ -53,20 +52,21 @@ namespace ChatServer
         public User GetUser(string _sessionID)
         {
             User user = null;
-            userMap.TryGetValue(_sessionID, out user);
+            UserMap.TryGetValue(_sessionID, out user);
             return user;
         }
 
         bool IsFullUserCount()
         {
-            return maxUserCount <= userMap.Count();
+            return MaxUserCount <= UserMap.Count();
         }
     }
 
     public class User
     {
+        // UniqueID
         UInt64 SequenceNumber = 0;
-        //SuperSocket의 SessionID
+        // SuperSocket의 SessionID
         string SessionID;
 
         public int RoomNumber { get; private set; } = -1;

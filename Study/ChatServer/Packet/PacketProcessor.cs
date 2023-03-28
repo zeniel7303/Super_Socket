@@ -16,27 +16,27 @@ namespace ChatServer
         //receive쪽에서 처리하지 않아도 Post에서 블럭킹 되지 않는다. 
         //BufferBlock<T>(DataflowBlockOptions) 에서 DataflowBlockOptions의 BoundedCapacity로 버퍼 가능 수 지정. 
         //BoundedCapacity 보다 크게 쌓이면 블럭킹 된다
-        BufferBlock<ServerPacketData> msgBuffer = new BufferBlock<ServerPacketData>();
+        BufferBlock<ServerPacketData> MsgBuffer = new BufferBlock<ServerPacketData>();
 
-        UserManager userManager = new UserManager();
+        UserManager UserManager = new UserManager();
 
-        Tuple<int, int> roomNumberRange = new Tuple<int, int>(-1, -1);
-        List<Room> roomList = new List<Room>();
+        Tuple<int, int> RoomNumberRange = new Tuple<int, int>(-1, -1);
+        List<Room> RoomList = new List<Room>();
 
-        Dictionary<int, Action<ServerPacketData>> packetHandlerMap
+        Dictionary<int, Action<ServerPacketData>> PacketHandlerMap
             = new Dictionary<int, Action<ServerPacketData>>();
 
         public void CreateAndStart(List<Room> _roomList, MainServer _mainServer)
         {
-            var maxUserCount = MainServer.serverOption.RoomMaxCount
-                * MainServer.serverOption.RoomMaxUserCount;
+            var MaxUserCount = MainServer.ServerOption.RoomMaxCount
+                * MainServer.ServerOption.RoomMaxUserCount;
 
-            userManager.Init(maxUserCount);
+            UserManager.Init(MaxUserCount);
 
-            roomList = _roomList;
-            var minRoomNum = roomList[0].number;
-            var maxRoomNum = roomList[0].number + roomList.Count() - 1;
-            roomNumberRange = new Tuple<int, int>(minRoomNum, maxRoomNum);
+            RoomList = _roomList;
+            var minRoomNum = RoomList[0].Number;
+            var maxRoomNum = RoomList[0].Number + RoomList.Count() - 1;
+            RoomNumberRange = new Tuple<int, int>(minRoomNum, maxRoomNum);
 
             RegistPacketHandler(_mainServer);
 
@@ -48,12 +48,12 @@ namespace ChatServer
         public void Destroy()
         {
             isThreadRunning = false;
-            msgBuffer.Complete();
+            MsgBuffer.Complete();
         }
 
         public void InsertPacket(ServerPacketData data)
         {
-            msgBuffer.Post(data);
+            MsgBuffer.Post(data);
         }
 
 
@@ -68,23 +68,23 @@ namespace ChatServer
             {
                 try
                 {
-                    var packet = msgBuffer.Receive();
+                    var packet = MsgBuffer.Receive();
 
-                    if(packetHandlerMap.ContainsKey(packet.packetID))
+                    if(PacketHandlerMap.ContainsKey(packet.PacketID))
                     {
-                        packetHandlerMap[packet.packetID](packet);
+                        PacketHandlerMap[packet.PacketID](packet);
                     }
                     else
                     {
                         System.Diagnostics.Debug.WriteLine("세션 번호 {0}, PacketID {1}, 받은 데이터 크기: {2}", 
-                            packet.sessionID, 
-                            packet.packetID, packet.
-                            bodyData.Length);
+                            packet.SessionID, 
+                            packet.PacketID, packet.
+                            BodyData.Length);
                     }
                 }
                 catch (Exception ex)
                 {
-                    isThreadRunning.IfTrue(() => MainServer.mainLogger.Error(ex.ToString()));
+                    isThreadRunning.IfTrue(() => MainServer.MainLogger.Error(ex.ToString()));
                 }
             }
         }

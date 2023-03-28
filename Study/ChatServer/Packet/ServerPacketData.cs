@@ -11,20 +11,20 @@ namespace ChatServer
 {
     public class ServerPacketData
     {
-        public Int16 packetSize;
-        public string sessionID;
-        public Int16 packetID;
-        public SByte type;
-        public byte[] bodyData;
+        public Int16 PacketSize;
+        public string SessionID;
+        public Int16 PacketID;
+        public SByte Type;
+        public byte[] BodyData;
 
         public void Assign(string _sessionID, Int16 _packetID, byte[] _packetBodyData)
         {
-            sessionID = _sessionID;
-            packetID = _packetID;
+            SessionID = _sessionID;
+            PacketID = _packetID;
 
             if (_packetBodyData.Length > 0)
             {
-                bodyData = _packetBodyData;
+                BodyData = _packetBodyData;
             }
         }
 
@@ -35,14 +35,14 @@ namespace ChatServer
 
             if (isConnect)
             {
-                packet.packetID = (Int32)PACKETID.NOTIFY_CONNECT;
+                packet.PacketID = (Int32)PACKETID.NOTIFY_CONNECT;
             }
             else
             {
-                packet.packetID = (Int32)PACKETID.NOTIFY_DISCONNECT;
+                packet.PacketID = (Int32)PACKETID.NOTIFY_DISCONNECT;
             }
 
-            packet.sessionID = sessionID;
+            packet.SessionID = sessionID;
 
             return packet;
         }
