@@ -38,6 +38,7 @@ namespace ChatServer
         {
             _packetHandlerMap.Add((int)PACKETID.REQ_ENTER_ROOM, RequestEnterRoom);
             _packetHandlerMap.Add((int)PACKETID.REQ_LEAVE_ROOM, RequestLeaveRoom);
+            // 정상적이지 않은 종료시 방에서 나갈때 보내주는 내부용 패킷
             _packetHandlerMap.Add((int)PACKETID.NOTIFY_LEAVE_ROOM, NotifyLeave);
             _packetHandlerMap.Add((int)PACKETID.REQ_ROOM_CHAT, RequestChat);
         }

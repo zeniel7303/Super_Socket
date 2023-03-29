@@ -17,6 +17,8 @@ namespace ChatServer
 
         List<RoomUser> UserList = new List<RoomUser>();
 
+        // 여기선 SuperSocket 관련된 객체가 없어 만든 변수
+        // (Room이 MainServer를 가지면 해결은 되나 그럴 이유가 없다.)
         public static Func<string, byte[], bool> NetSendFunc;
     
         public void Init(int _index, int _number, int _maxUserCount)
